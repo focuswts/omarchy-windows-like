@@ -34,6 +34,22 @@ Then load the Hyprland module from `~/.config/hypr/hyprland.lua`:
 dofile(os.getenv("HOME") .. "/.config/omarchy/plugins/focuswts.windows-like/hyprland.lua")
 ```
 
+The plugin expects Omarchy Quattro, Hyprland 0.56 or newer, `jq`, and the
+Floating Window Mode snap integration for Aero drag previews. The Alt+Tab
+switcher is provided by Omarchy's `vbrosseau.alttab` plugin.
+
+## Removal
+
+Remove the loader line from `~/.config/hypr/hyprland.lua`, then disable and
+remove the plugin:
+
+```sh
+omarchy plugin disable focuswts.windows-like
+omarchy plugin remove focuswts.windows-like --yes
+```
+
+Reload Hyprland afterward with `hyprctl reload`.
+
 After restoring or changing the plugin:
 
 ```sh
