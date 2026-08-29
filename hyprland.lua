@@ -11,6 +11,7 @@ o.bind("ALT + TAB", "Reveal active window on top", hl.dsp.window.bring_to_top())
 
 hl.unbind("SUPER + TAB")
 o.bind("SUPER + TAB", "Alt-Tab switcher", hl.dsp.global("omarchy-alttab:next"), { repeating = true })
+hl.layer_rule({ match = { namespace = "omarchy-alttab" }, no_anim = true })
 
 -- Windows-like maximize / restore and always-on-top.
 hl.unbind("SUPER + UP")
