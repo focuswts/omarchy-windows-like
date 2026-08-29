@@ -20,6 +20,10 @@ Windows while preserving Hyprland's workspaces.
 The plugin intentionally uses `Win+Tab` for the same task switcher as `Alt+Tab`.
 The workspace navigation shortcuts remain separate from task switching.
 
+When Floating Window Mode is installed, its keyboard snap shortcuts use
+`Ctrl+Win+Alt+setas` so they do not collide with this plugin's workspace
+navigation shortcuts.
+
 ## Installation
 
 Install with Omarchy:
