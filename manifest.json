@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "focuswts.windows-like",
+  "name": "Windows-like Window Experience",
+  "version": "0.1.0",
+  "author": "focuswts",
+  "license": "MIT",
+  "description": "Windows-inspired window focus, snapping, workspaces and always-on-top behavior for Omarchy.",
+  "kinds": ["service"],
+  "keepLoaded": true,
+  "entryPoints": {
+    "service": "omarchy-plugin/Service.qml"
+  }
+}

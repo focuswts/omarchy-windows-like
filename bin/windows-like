@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+action="${1:-}"
+[[ "$action" == "down" || "$action" == "leave-workspace" ]] || exit 2
+
+command -v hyprctl >/dev/null 2>&1 || exit 1
+command -v jq >/dev/null 2>&1 || exit 1
+
+if [[ "$action" == "leave-workspace" ]]; then
+  workspace_id="$(hyprctl -j activeworkspace | jq -r '.id')"
+  mapfile -t addresses < <(hyprctl -j clients | jq -r --argjson id "$workspace_id" '.[] | select(.workspace.id == $id) | .address')
+  for address in "${addresses[@]}"; do
+    hyprctl dispatch "movetoworkspacesilent e-1,address:$address" >/dev/null
+  done
+  hyprctl dispatch workspace e-1 >/dev/null
+  exit 0
+fi
+
+active="$(hyprctl -j activewindow)"
+fullscreen="$(jq -r '.fullscreen // 0' <<<"$active")"
+
+if [[ "$fullscreen" != "0" ]]; then
+  hyprctl dispatch fullscreen 0 >/dev/null
+else
+  hyprctl dispatch movetoworkspacesilent special:minimized >/dev/null
+fi
